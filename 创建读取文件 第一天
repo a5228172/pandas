@@ -1,0 +1,25 @@
+import os
+import pandas as pd 
+# df = pd.DataFrame({"ID":[1,2,3],"Name":["Tim","victor","nick"]})
+#print(df)
+# df = df.set_index("ID")  #"设置ID为第一层"
+# print(df)
+# df.to_excel(r'C:\Users\Administrator\Desktop\新建文件夹 (3)\123.xlsx')  #保存文件
+# print("Done!")
+
+
+
+people = pd.read_excel(r"E:\BaiduYunDownload\资料\People.xlsx",header=None)
+#header=1  从第1行开始读    header = None  插入第一行数据
+# people.columns = ["ID","Type","Title","FirstName","MiddleName","LastName"]
+# print(people.shape)  #输出总行数 然后是总宽数
+# print(people.columns)   #输出第一列数据
+# print(people.head(2))	#输出前2行数据
+# print("=======================")
+# print(people.tail(3))	#输出后3行数据
+# people = people.set_index("ID")
+# people.to_excel(r'C:\Users\Administrator\Desktop\新建文件夹 (3)\123.xlsx')
+df =pd.read_excel(r"C:\Users\Administrator\Desktop\新建文件夹 (3)\123.xlsx",index_col = "ID")
+# 设置第一行为ID index_col = "ID"
+print(df.head())
+df.to_excel(r"C:\Users\Administrator\Desktop\新建文件夹 (3)\1233.xlsx")
