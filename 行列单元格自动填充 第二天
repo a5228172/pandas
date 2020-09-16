@@ -1,0 +1,22 @@
+import os
+import pandas as pd 
+from datetime import date,timedelta
+# L1 = [100,200,300]
+# L2 = ['x','y','z']
+# s1 = pd.Series(L1,index=L2)
+# print(s1)
+# s1 = pd.Series([1,2,3],index=[1,2,3],name='A')
+# s2 = pd.Series([10,20,30],index=[1,2,3],name='B')
+# s3 = pd.Series([100,200,300],index=[1,2,3],name='C')
+# # df = pd.DataFrame({s1.name:s1,s2.name:s2,s3.name:s3})
+# df = pd.DataFrame(s1,s2,s3)
+# print(df)
+books = pd.read_excel(r'E:\BaiduYunDownload\资料\Books (1).xlsx',skiprows=3,usecols="C:F",index_col=None,dtype={'ID':str,'InStore':str,'Date':str})
+# books['ID'].at[0] = 100
+start = date(2018,1,1)
+for i in books.index:
+	books['ID'].at[i] = i+1
+	books["InStore"].at[i] = "Yes" if i % 2 == 0 else 'No'
+	books['Date'].at[i] = start + timedelta(days = i)
+print(books)
+# print(books['ID'])
