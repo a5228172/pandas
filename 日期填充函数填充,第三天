@@ -1,0 +1,39 @@
+import os
+import pandas as pd 
+from datetime import date,timedelta
+
+def add_month(d,md):
+	yd = md // 12
+	m = d.month + md % 12
+	print(d)
+	if m != 12:
+		yd += m//12
+		m = m % 12
+	return date(d.year+yd,m,d.day)
+# books = pd.read_excel(r'E:\BaiduYunDownload\资料\Books (1).xlsx',skiprows=3,usecols="C:F",index_col=None,dtype={'ID':str,'InStore':str,'Date':str})
+# # books['ID'].at[0] = 100
+# start = date(2018,5,1)
+# for i in books.index:
+	# books['ID'].at[i] = i+1
+	# books["InStore"].at[i] = "Yes" if i % 2 == 0 else 'No'
+	# books['Date'].at[i] = start + timedelta(days = i)   #加天数
+	# books['Date'].at[i] = date(start.year + i,start.month,start.day)
+	# books['Date'].at[i] = add_month(start,i)
+
+# 	books.at[i,'ID'] = i+1
+# 	books.at[i,"InStore"] = "Yes" if i % 2 == 0 else 'No'
+# 	books.at[i,'Date'] = add_month(start,i)
+
+# books.set_index('ID',inplace =True)   #删除前面的1,2,3,4,5,6,7,8,9
+# print(books)
+#books.to_excel(r'C:\Users\Administrator\Desktop\1234.xls')
+# print(books['ID'])
+
+books = pd.read_excel(r'E:\BaiduYunDownload\资料\Books.xlsx',skiprows=7,usecols="G:K")
+#books['Price'] = books['ListPrice'] * books['Discount']
+# for i in books.index:
+# for i in (11,16):
+# 	books['Price'].at[i] = books['ListPrice'].at[i] * books['Discount'].at[i]
+books['ListPrice'] = books['ListPrice'].apply(lambda x :x **3)
+books.set_index('ID',inplace =True) 
+print(books)
