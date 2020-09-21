@@ -1,0 +1,13 @@
+import os
+import pandas as pd 
+from datetime import date,timedelta
+books = pd.read_excel(r'E:\BaiduYunDownload\资料\Students.xlsx',index_col='ID')
+# books.sort_values(by=['Worthy','Price'],inplace=True,ascending=[True,False])
+# #ascending=[True,False]排序
+# def age_18_to_30(a):
+# 	return 18 <= a < 30
+# def level_a(a):
+# 	return 85 <= a < 100
+books = books.loc[books.Age.apply(lambda a:18 <= a < 30 )]\
+.loc[books.Score.apply(lambda a:85 <= a < 100)]
+print(books)
