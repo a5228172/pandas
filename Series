@@ -1,0 +1,18 @@
+import pandas as pd
+import numpy as np
+a = pd.Series([1,2,3,4],index=['a','b','c','d'])
+a = pd.Series(np.arange(4),index=['a','b','c','d'])
+print(a)
+print('a' in a)
+for x in a:
+	print(x)
+print('a' in a)
+print(a.index)
+s1 = pd.Series([12,23,34],index=['c','a','d'])
+s2 = pd.Series([11,20,10],index=['b','c','a'])
+print(s1.add(s2,fill_value=0))
+a = s1.add(s2)
+print(a)
+print(a.dropna())
+print(a.fillna(0))
+print(a.fillna(a.mean()))
