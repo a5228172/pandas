@@ -1,0 +1,36 @@
+import pandas as pd
+import numpy as np
+
+a = pd.DataFrame({"one":[1,2,3],'two':[4,5,6]},index=['a','b','c'])
+
+print(a.index)      #行索引
+print(a.values)     #值
+print(a.T)          #倒
+print(a.columns)    #列索引
+print(a.describe()) #统计
+a1  = pd.DataFrame({'two':[1,2,3,4],'one':[4,5,6,7]},index=['c','d','b','a'])
+# print(a+a1)
+a1.loc['d','two']=np.nan
+a1.loc['d','one']=np.nan
+a1.loc['c','two']=np.nan
+print(a1)
+print('---------')
+print(a1.dropna(how='all'))
+print('---------')
+a1 = a1.dropna(how='all')
+print(a1.dropna(axis=1))        #按行求值   axis=1
+print('---------')
+print(a1.sort_values(by='two',ascending=False))
+print(pd.date_range('2010-01-01',periods=60,freq='B'))
+sr = pd.Series(np.arange(1000),index=pd.date_range('2017-01-01',periods=1000))
+print(sr)
+print('---------')
+print(sr.resample('W').sum())
+print('---------')
+print(sr.resample('M').sum())
+print('---------')
+print(sr.resample('M').mean())
+print('---------')
+print(sr.truncate((before='2018-02-03',offset="2019-01-45")))
+print('---------')
+pd.read_excel('asd.xlsx',index_col='date',parse_dates=['date'],header=None,name=)
