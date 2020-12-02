@@ -53,3 +53,17 @@ print(a.mean()+2*a.std())   #90%的范围
 print(a.mean()-2*a.std())   #90%的范围
 
 
+df = pd.read_csv('123.csv',index_col='date',parse_dates=['date'])[['open','close','high','low']]
+# print(df)
+# print(df['close'][:5])
+# print(df[(df['open']-df['close'])/df['open']>0.03])
+# print(df['close'].shift(1)[:5])
+# print(df[(df['open']-df['close'].shift(1))/df['close'].shift(1)<0.02])
+
+# print(df[(df['open']-df['close'].shift(1))/df['close'].shift(1)<0.02].index)
+t = df['open'][-1]
+df = df['2001-09':'2017-11']
+# df = df.resample('M').sum()
+# df1 = df.resample('M').last()
+df2 = df.resample('M').first()
+df3 = df.resample('A').last()[:-1]
