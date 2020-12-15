@@ -1,0 +1,56 @@
+
+import pandas as pd
+
+path = 'E:\python\测试\\数据查询.xlsx'
+data = pd.DataFrame(pd.read_excel(path,sheet_name='Left',header=1,converters={'A': str}))     # converters={'A': str} 设置A列格式为文本
+
+data.index                       # 查看索引
+data.values                      # 查看数值
+data.sort_index()                # 按索引排序
+data.sort_values()               # 按数值排序
+data.head( 5 )                   # 查看前5行
+data.tail( 3 )                   # 查看后3行
+data.values                      # 查看数值
+datashape                        # 查看行数、列数
+data.isnull()                    # 查找data中出现的空值
+data.unique()                    # 查看唯一值
+data.columns                     # 查看data的列名
+data.sort_index()                # 索引排序 
+data.sort_values()               # 值排序
+
+pd.merge(data1,data2)            # 合并,以下为左连接
+pd.merge(data1,data2,on=[a],how='left') 
+pd.concat([data1,data2])         # 合并，与merge的区别，自查**（特别注意要使用[]）**
+pd.pivot_table( data )           # 用df做data透视表（类似于Excel的数透）
+
+data.reset_index()               # 修改、删除原有索引
+data.reindex()                   # 重置索引，如下示例
+data=data.reindex(columns=['商品名称', '规格', '对应车型类别', '备注', '新增的一列'], fill_value='新增的一列要填的值')  
+
+a=data['x']                      # 取列名为'x'的列，格式为series
+b=data[['x']]                    # 取列名为'x'的列，格式为Dataframe
+c=data[['w','z']]                # 取多列时需要用Dataframe的格式
+data.loc['A']                    # 取行名为'A'的行
+data.loc[:,['x','z'] ]           # 表示选取所有的行以及columns为x,z的列
+data['name'].values              # 取列名为'name'的列的值（取出来的是array而不是series）取单行后是一个Series，Series有index而无columns，可以用name来获取单列的索引
+data.head(4)                     # 取头四行
+data.tail(3)                     # 取尾三行
+**data= data.iloc[2:, 2:20]        # 选择2行开始、2-11列**
+[m, n] = data.shape              # 对m,n进行复制，m等于最大行数  n等于最大列数
+
+data.notnull()                   # 非空值
+data.dropna()                    # 删除空值
+data.dropna()                    # 删除有空值的行
+data.dropna(axis=1)              # 删除有空值的列
+data.dropna(how='all')           # 删除所有值为Nan的行
+data.dropna(thresh=2)            # 至少保留两个非缺失值
+data.strip()                     # 去除列表中的所有空格与换行符号
+data.fillna(0)                   # 将空值填充0
+data.replace(1, -1)              # 将1替换成-1
+
+data.fillna(100)                      # 填充缺失值为100
+data.fillna({'语文':100,'数学':100,})        # 不同列填充不同值
+data.fillna(method='ffill')                 # 将空值填充为上一个值
+data.fillna(method='bfill')                 # 将空值填充下一个值
+data.fillna(method='bfill',limit=1)         # 将空值填充下一个值，限制填充数量为1
+```
