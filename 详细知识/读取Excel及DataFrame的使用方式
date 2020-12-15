@@ -54,3 +54,5 @@ data.fillna(method='ffill')                 # 将空值填充为上一个值
 data.fillna(method='bfill')                 # 将空值填充下一个值
 data.fillna(method='bfill',limit=1)         # 将空值填充下一个值，限制填充数量为1
 ```
+st.ID =pd.to_numeric(st.ID)
+st.POSSTR.astype(int,errors='ignore')
