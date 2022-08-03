@@ -1,13 +1,37 @@
 import pandas as pd
 import numpy as np
+st.POSSTR.astype(int,errors='ignore') #更改格式
+st.ID =pd.to_numeric(st.ID)   #更改格式
+df = df.set_index("ID")  #"设置ID为第一层"
+books.set_index('ID',inplace =True)
+st.drop_duplicates(subset=["分单号",'源头责任人'],keep='first') #去重
+st1 = st.drop_duplicates(keep=False).append(st.drop_duplicates(keep='first')).drop_duplicates(keep=False)
+wuquyuren = st.loc[st[6].apply(lambda x : str(x)=='nan')].iloc[:,0].dropna().values
+st.drop(i,axis=1,inplace=True)
+def excel_tiqu(s):
+	st1= pd.read_excel(s)
+	st2= pd.read_excel(s,pd.ExcelFile(s).sheet_names[1])
+
 
 a = pd.DataFrame({"one":[1,2,3],'two':[4,5,6]},index=['a','b','c'])
+#调整列顺序
+df = pd.DataFrame(np.random.randn(3,4),columns=['a','b','c','d'])
+c = df.pop('c')             #pop出一个Series
+df.insert(4,'c_new',c)   #相当于在第4列的位置，添加列名为c_new的列c
+print(df) 
 
 print(a.index)      #行索引
 print(a.values)     #值
 print(a.T)          #倒
 print(a.columns)    #列索引
 print(a.describe()) #统计
+a1 = list(pd.read_excel(r'材料表.xlsx').T.to_dict().values()) #转成列表
+st = st.values.tolist()#转成列表
+for x in range(0,st4.shape[0]): #循环
+st = np.array(st[['door_shape','door_color']]).tolist()	#转成列表
+a1 = a1.dropna(how='all')# 去除列
+st.insert(8,"受理时间","")	# 增加列
+pd.merge(data1,data2) #表格合并
 a1  = pd.DataFrame({'two':[1,2,3,4],'one':[4,5,6,7]},index=['c','d','b','a'])
 # print(a+a1)
 a1.loc['d','two']=np.nan
@@ -65,7 +89,7 @@ pd.concat([data01,data02,data03],axis=1)             # 合并横向拼接
 pd.pivot_table( data )           # 用df做data透视表（类似于Excel的数透）
  
 data.reset_index()               # 修改、删除原有索引
-data.reindex()                   # 重置索引，如下示例
+data.reindex()                   # # Series重置索引
 data.index = range(len(data))    # 重置索引，从0开始
  
 a=data['x']                      # 取列名为'x'的列，格式为series
