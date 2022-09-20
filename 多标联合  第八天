@@ -1,0 +1,21 @@
+import os
+import pandas as pd 
+from datetime import date,timedelta
+import matplotlib.pyplot as plt
+pd.options.display.max_columns = 777
+students = pd.read_excel(r'E:\BaiduYunDownload\资料\014\home_data.xlsx')
+# print(students.head())
+# students.plot.scatter(y= "sqft_living",x="price")
+# students.price.plot.hist(bins=100)
+# plt.xticks(range(0,max(students.price),100000),fontsize=8,rotation = 90)
+# students.sqft_living.plot.kde()
+# plt.xticks(range(0,max(students.sqft_living),500),fontsize=8,rotation = 90)
+# print(students.corr())
+# plt.show()
+students = pd.read_excel(r'E:\BaiduYunDownload\资料\016\Student_Score.xlsx',sheet_name='Students',index_col='ID')
+books = pd.read_excel(r'E:\BaiduYunDownload\资料\016\Student_Score.xlsx',sheet_name='Scores',index_col='ID')
+table = students.join(books,how='left')\
+    .fillna(0)    #how='left'  查不到的数据显示出来left_on   right_on='ID'   students.merge
+# 用0来代替空
+table.Score = table.Score.astype(int)
+print(table)

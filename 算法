@@ -1,0 +1,51 @@
+df = pd.read_csv('123.csv',index_col='date',parse_dates=['date'])[['open','close','high','low']]
+# print(df)
+# print(df['close'][:5])
+# print(df[(df['open']-df['close'])/df['open']>0.03])
+# print(df['close'].shift(1)[:5])
+# print(df[(df['open']-df['close'].shift(1))/df['close'].shift(1)<0.02])
+
+# print(df[(df['open']-df['close'].shift(1))/df['close'].shift(1)<0.02].index)
+t = df['open'][-1]
+df = df['2001-09':'2017-11']
+# df = df.resample('M').sum()
+# df1 = df.resample('M').last()
+df2 = df.resample('M').first()
+df3 = df.resample('A').last()[:-1]
+
+
+
+df['ma5'] = np.nan
+df['ma30'] = np.nan
+# print(df)
+for x in range(4,len(df)):
+    # print(x)
+    df.iloc[x,4]=df.close[x-4:x+1].mean()
+for x in range(29,len(df)):
+    df.iloc[x,5]=df.close[x-29:x+1].mean()
+# print(df)
+# df['ma51'] = df['close'].rolling(5).mean()
+# print(df)
+# df[['close','ma5','ma30']][:100].plot()
+# plt.show()
+df = df.dropna()
+d = []
+s = []
+# for x in range(1,len(df)):
+#     # print(df.iloc[x-1,'ma5']<df.iloc[x-1,'ma30'])
+#     if df.iloc[x-1,4]<df.iloc[x-1,5] and df.iloc[x,4]>df.iloc[x,5]:
+#         d.append(df.index[x])
+#     if df.iloc[x-1,4]>df.iloc[x-1,5] and df.iloc[x,4]<df.iloc[x,5]:
+#         s.append(df.index[x])
+d = df[(df['ma5']<df['ma30']) & (df['ma5']>=df['ma30'].shift(1))].index
+s = df[~((df['ma5']<df['ma30']) | (df['ma5']>=df['ma30'].shift(1)))].index
+
+
+print(s)
+print(True &False)
+print(False &False)
+print(True &True)
+print(True |False)
+print(False |False)
+print(True |True)
+

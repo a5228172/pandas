@@ -1,0 +1,20 @@
+import os
+import pandas as pd 
+from datetime import date,timedelta
+import matplotlib.pyplot as plt
+
+# students = pd.read_excel(r'E:\BaiduYunDownload\资料\013\Orders.xlsx',index_col='Week')
+# print(students.columns)
+# # students.plot.area(y=['Accessories','Bikes','Clothing','Components'],title="123456")   #area填充线
+# students.plot.bar(y=['Accessories','Bikes','Clothing','Components'],stacked = True)      #tacked = True叠加起来
+# plt.title("123456",fontsize = 16,fontweight = 'bold')
+# plt.ylabel('Total',fontsize=16)
+# plt.xticks(students.index,fontsize=6)    #xticks  x轴的索引全部填写
+# plt.show()
+pd.options.display.max_columns = 777
+students = pd.read_excel(r'E:\BaiduYunDownload\资料\014\home_data.xlsx')
+print(students.head())
+students.plot.scatter(y= "sqft_living",x="price")            #scatte  直方图
+students.sqft_living.plot.hist(bins=100)
+# plt.xticks(range(0,max(students.sqft_living),500),fontsize=8,rotation = 90)
+plt.show()

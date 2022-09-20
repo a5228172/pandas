@@ -1,0 +1,32 @@
+例1：按语文分数排序降序，数学升序，英语降序
+import pandas as pd
+path = 'c:/pandas/排序.xlsx'
+data= pd.read_excel(path ,index_col='序号')
+data.sort_values(by=['语文','数学','英语'],inplace=True,ascending=[False,True,False])
+print(data)
+按索引进行排序 
+import pandas as pd
+path = 'c:/pandas/排序.xlsx'
+data = pd.read_excel(路径,index_col='序号')
+data.sort_index(inplace=True)
+print(data)
+单条件查询 
+import pandas as pd
+path = 'c:/pandas/筛选.xlsx'
+data = pd.read_excel(path ,index_col='出生日期')
+print(data.loc['1983-10-27','语文'])
+多条件查询
+import pandas as pd
+path = 'c:/pandas/筛选.xlsx'
+data = pd.read_excel(path ,index_col='出生日期')
+print(data.loc['1983-10-27',['语文','数学','英语']])
+使用数据区间范围进行查询
+import pandas as pd
+path = 'c:/pandas/筛选.xlsx'
+data = pd.read_excel(path,index_col='出生日期')
+print(data.loc['1983-10-27':'1990-12-31',['语文','数学','英语']])
+使用条件表达式进行查询
+import pandas as pd
+path = 'c:/pandas/筛选.xlsx'
+data = pd.read_excel(路径,index_col='出生日期')
+print(data.loc[(data['语文'] > 60) & (data['英语'] < 60),:])        #这里的   ,:   指的是列取全部

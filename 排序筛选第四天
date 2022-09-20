@@ -1,0 +1,25 @@
+import os
+import pandas as pd 
+from datetime import date,timedelta
+books = pd.read_excel(r'E:\BaiduYunDownload\资料\Students.xlsx',index_col='ID')
+# books.sort_values(by=['Worthy','Price'],inplace=True,ascending=[True,False])
+# #ascending=[True,False]排序
+# def age_18_to_30(a):
+# 	return 18 <= a < 30
+# def level_a(a):
+# 	return 85 <= a < 100
+books = books.loc[books.Age.apply(lambda a:18 <= a < 30 )]\
+.loc[books.Score.apply(lambda a:85 <= a < 100)]
+print(books)
+#st = st.astype(str)
+#st.橱柜柜子数量 = st.橱柜柜子数量.apply(pd.to_numeric, errors='ignore')
+#for i in st.index:
+	if st.橱柜柜子数量.at[i]=="nan":
+		st.橱柜柜子数量.at[i] = 0
+	st.柜身分单时间.at[i] = pd.Timestamp(str(st.柜身分单时间.at[i])[:10])
+#students = students.drop_duplicates(subset=['分单号'], keep='first')
+#a7 = dict(students.补板时间.value_counts())	# 拆单车间问题
+#books  = openpyxl.load_workbook(r'C:\Users\Administrator\Desktop\订单报表AC.xlsx')
+#sheet0 = books[books.sheetnames[0]]
+#w2 = "12" if int(stmp1)-1 ==0 else str(int(stmp1)-1)+ "月份计划报表.xlsx"
+#riqi2 = str(time.localtime(riqi-86400*2)[2])

@@ -1,0 +1,19 @@
+import os
+import pandas as pd 
+from datetime import date,timedelta
+import matplotlib.pyplot as plt
+# students = pd.read_excel(r'E:\BaiduYunDownload\资料\011\Users.xlsx')
+# students['Tptal'] = students['Oct']+students['Nov']+students['Dec']
+# students.sort_values(by='Tptal',inplace=True,ascending=False)   #ascending=False  从大到小
+# print(students)
+# students.plot.barh(x='Name',y =['Oct','Nov','Dec'],stacked = True,title='123456',)   #stacked = True三个列合并 barh横向
+# plt.tight_layout()     #完整显示
+# plt.show()
+students = pd.read_excel(r'E:\BaiduYunDownload\资料\012\Students.xlsx',index_col='From')
+print(students)
+students["2017"].plot.pie(fontsize=4,counterclock=False,startangle=-270)    #counterclock  从大到小排序
+# startangle=-270旋转角度
+plt.title('123456',fontsize=16,fontweight='bold')
+plt.ylabel('2017',fontsize=18,fontweight='bold')
+plt.tight_layout()
+plt.show()
