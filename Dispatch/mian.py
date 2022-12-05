@@ -34,6 +34,7 @@ def muban():
 	# app.Quit()
 	# c1.Cells(x+1,i+1).Font.ColorIndex = 3
 	# c1.Cells(x+1,i+1).Interior.ColorIndex = 4
+	
 def duibi3():
 	app = Dispatch("Excel.Application")
 	app.Visible = 1	
@@ -64,6 +65,20 @@ def duibi3():
 				c1.Cells(x+1,i+1).Interior.ColorIndex = 0
 	# c1.Cells(2,1).value =123456
 	print(c1)
+def main3():
+	app =Dispatch("Excel.Application")
+	ss= r'E:\er\门板123.xlsx'
+	xlbook=app.Workbooks(ss)
+	xlbook.Activate()
+	c1 = xlbook.Sheets(1)
+	hangshu = c1.UsedRange.Rows.Count
+	c1.Rows(f'{hangshu}:{hangshu}').Copy()
+	for x in range(3):
+		hangshu = hangshu+1
+		c1.Rows(f'{hangshu}:{hangshu}').Select()
+		c1.Paste()
+	print(hangshu)
+	
 if __name__ == '__main__':
 	# qushuju()
 	duibi3()
