@@ -33,7 +33,7 @@ def muban():
 	# xlbook.Close(SaveChanges=True)
 	# app.Quit()
 	# c1.Cells(x+1,i+1).Font.ColorIndex = 3
-	# c1.Cells(x+1,i+1).Interior.ColorIndex = 4
+	# c1.Cells(x+1,i+1).Interior.ColorIndex = 4 #单元格颜色
 	
 def duibi3():
 	app = Dispatch("Excel.Application")
