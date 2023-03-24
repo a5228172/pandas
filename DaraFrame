@@ -15,6 +15,8 @@ def excel_tiqu(s):
 
 a = pd.DataFrame({"one":[1,2,3],'two':[4,5,6]},index=['a','b','c'])
 #调整列顺序
+y1 = y1.reindex(columns=['KMS', 'BARCODE', 'FLENG', 'FWIDTH', 'FTHK', 'INFO1', 'INFO2', 'INFO3', 'INFO4', 'MATID', 'MATNAME'])
+
 df = pd.DataFrame(np.random.randn(3,4),columns=['a','b','c','d'])
 c = df.pop('c')             #pop出一个Series
 df.insert(4,'c_new',c)   #相当于在第4列的位置，添加列名为c_new的列c
